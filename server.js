@@ -8,14 +8,16 @@ var app = express();
 
 var port = process.env.port || 3000;
 
-
+// / API and HTML routes
+require("./app/routing/apiRoutes.js")(app);
+require("./app/routing/htmlRoutes.js")(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true} ));
 app.use(bodyParser.text());
 
-require(path.join(__dirname, './app/routing/apiRoutes'))(app);
-require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
+// require(path.join(__dirname, './app/routing/apiRoutes'))(app);
+// require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
 
 
 app.listen(port, function() {
